@@ -1,18 +1,8 @@
-import React, { Component, useState } from 'react';
-import AccessCamera from "./AccessCamera/AccessCamera";
+import React from 'react';
+import Main from './Main/Main';
 
-import "./../styles/app.less";
+import './../styles/app.less';
 
-const App: React.FC = () => {
+const App: React.FC = () => <Main />;
 
-  const [isUserReady, setIsUserReady] = useState(false);
-
-  return (
-    <div>
-      <AccessCamera setIsUserReady={setIsUserReady} isUserReady={isUserReady} />
-    </div>
-  );
-
-}
-
-export default App
+export default App;

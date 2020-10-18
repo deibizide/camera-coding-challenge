@@ -2,7 +2,7 @@ const express = require('express');
 // call express
 const app = express(); // define our app using express
 const bodyParser = require('body-parser');
-const os = require('os');
+const path = require('path');
 require('dotenv').config();
 
 const { send } = require('./mail');
