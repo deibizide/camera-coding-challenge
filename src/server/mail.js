@@ -32,7 +32,7 @@ exports.send = async req => {
     const mailOptions = {
         from: 'David <noreply@david.com>',
         to: 'david.ramis89@gmail.com',
-        subject: 'daniela',
+        subject: 'daniela.ramis89@gmail.com',
         html,
         text,
     };

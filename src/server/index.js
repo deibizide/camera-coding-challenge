@@ -10,7 +10,7 @@ const { send } = require('./mail');
 // configure app to use bodyParser()
 // this will let us get the data from a POST
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true, limit: '50mb', parameterLimit: 50000 }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 const port = process.env.PORT || 8050; // set our port
 
@@ -24,6 +24,8 @@ router.use((req, res, next) => {
     console.log('App is running');
     next(); // make sure we go to the next routes and don't stop here
 });
+
+router.post('/send', send);
 
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
