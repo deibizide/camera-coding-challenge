@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 require('dotenv').config();
 
-const { send } = require('./mail');
+const { send } = require('./server/mail');
 
 app.use(express.static(path.join(__dirname, 'build')));
 
