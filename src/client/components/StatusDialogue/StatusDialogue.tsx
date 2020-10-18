@@ -8,8 +8,8 @@ interface Props {
 }
 
 const StatusDialogue: React.FC<Props> = ({ isSuccess, reset }) => {
-    const SUCCESS = 'Yay! Image was successfully sent';
-    const ERROR = 'Oh no, something went wrong.';
+    const SUCCESS = 'Yay! Image was successfully sent.';
+    const ERROR = 'The file is too big!';
 
     return (
         <div className="main d-flex justify-content-center align-items-center flex-column">

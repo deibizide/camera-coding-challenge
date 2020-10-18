@@ -1,18 +1,13 @@
 const nodemailer = require('nodemailer');
-const juice = require('juice');
 const htmlToText = require('html-to-text');
-var postmark = require('postmark');
 
 const transport = nodemailer.createTransport({
-    host: process.env.MAIL_HOST,
-    port: process.env.MAIL_PORT,
-    auth: {
-        user: process.env.MAIL_USER,
-        pass: process.env.MAIL_PASS,
-    },
+    sendmail: true,
+    newline: 'unix',
+    path: '/usr/sbin/sendmail',
 });
 
-const makeANiceEmail = imageSrc => `
+const createEmail = imageSrc => `
 <div
     style="height: max-content;
     background-color: #45b5b9;
@@ -44,12 +39,12 @@ const makeANiceEmail = imageSrc => `
 
 exports.send = async (req, res) => {
     const imageSrc = req.body.file;
-    const html = makeANiceEmail(imageSrc);
+    const html = createEmail(imageSrc);
     const text = htmlToText.fromString(html);
     const mailOptions = {
-        from: 'David <noreply@david.com>',
+        from: 'David <david.ramis@gmail.com>',
         to: 'david.ramis89@gmail.com',
-        subject: 'YOUGOT AN EMAILL',
+        subject: 'You got an email',
         html,
         text,
     };
@@ -59,21 +54,3 @@ exports.send = async (req, res) => {
         .then(() => res.status(200).end())
         .catch(() => res.status(404).end());
 };
-
-// exports.send = async req => {
-//     const imageSrc = req.body.file;
-//     const html = makeANiceEmail(imageSrc);
-//     const text = htmlToText.fromString(html);
-//     const mailOptions = {
-//         from: 'David <noreply@david.com>',
-//         to: 'david.ramis89@gmail.com',
-//         subject: 'YOUGOT AN EMAILL',
-//         html,
-//         text,
-//     };
-
-//     transport
-//         .sendMail(mailOptions)
-//         .then(() => res.status(200).end())
-//         .catch(() => res.status(404).end());
-// };

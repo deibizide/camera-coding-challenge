@@ -31,6 +31,7 @@ router.use((req, res, next) => {
     next(); // make sure we go to the next routes and don't stop here
 });
 
+// Listen to post request on route /send and call send function in mail.js
 router.post('/send', send);
 
 // REGISTER OUR ROUTES -------------------------------
