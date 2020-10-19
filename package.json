@@ -4,11 +4,10 @@
   "description": "Coding challenge",
   "main": "src/index.js",
   "scripts": {
-    "build": "webpack --config webpack.config.js && react-scripts build && npm install",
+    "build": "webpack --config webpack.config.js && react-scripts build && npm install && npm run start",
     "start": "node src/index.js",
     "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",
-    "server": "nodemon src/index.js",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "server": "nodemon src/index.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
@@ -40,7 +39,6 @@
     "babel-eslint": "^10.0.0",
     "babel-loader": "^8.0.0",
     "clean-webpack-plugin": "^1.0.0",
-    "concurrently": "^4.0.0",
     "copy-webpack-plugin": "^5.0.3",
     "css-loader": "^1.0.1",
     "eslint-config-airbnb": "^17.0.0",

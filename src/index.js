@@ -15,8 +15,6 @@ app.get('/*', (req, res) => {
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
-app.use(bodyParser.json({ limit: '50mb' }));
-app.use(bodyParser.urlencoded({ limit: '50mb', parameterLimit: 100000, extended: true }));
 
 const port = process.env.PORT || 8050; // set our port
 
@@ -30,6 +28,23 @@ router.use((req, res, next) => {
     console.log('App is running');
     next(); // make sure we go to the next routes and don't stop here
 });
+
+app.use(
+    bodyParser.json({
+        limit: '5000000',
+        type: 'application/json',
+        extended: true,
+    })
+);
+
+app.use(
+    bodyParser.urlencoded({
+        parameterLimit: 5000000,
+        extended: true,
+    })
+);
+console.log(app);
+router.use(express.json());
 
 // Listen to post request on route /send and call send function in mail.js
 router.post('/send', send);

@@ -43,7 +43,7 @@ exports.send = async (req, res) => {
     const text = htmlToText.fromString(html);
     const mailOptions = {
         from: 'David <david.ramis@gmail.com>',
-        to: 'david.ramis89@gmail.com',
+        to: process.env.MAIL_RECIPIENT,
         subject: 'You got an email',
         html,
         text,
