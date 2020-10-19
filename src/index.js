@@ -16,7 +16,7 @@ app.get('/*', (req, res) => {
 // configure app to use bodyParser()
 // this will let us get the data from a POST
 app.use(bodyParser.json({ limit: '50mb' }));
-app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+app.use(bodyParser.urlencoded({ limit: '50mb', parameterLimit: 100000, extended: true }));
 
 const port = process.env.PORT || 8050; // set our port
 
